@@ -16,7 +16,7 @@ vue.use(vuex)
 export default new vuex.Store({
   state: {
     foodList: [],
-    // curent:[],
+    myFood:[],
     searchedFood:[]
   },
   mutations: {
@@ -31,7 +31,7 @@ export default new vuex.Store({
   actions: {
     addItemToCart({ commit, dispatch }, item) {
       commit('addItemToCart', item)
-      router.push({ name: 'cart' })
+      router.push({ name: 'myFood' })
     },
   getFoodList({ commit, dispatch }, items) {
     api.post("", { query: items })

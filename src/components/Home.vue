@@ -38,6 +38,7 @@
       },
       setSerchRes(){
         return this.$store.state.searchedFood
+        
       }
     },
     methods: {
