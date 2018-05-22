@@ -16,25 +16,31 @@ vue.use(vuex)
 export default new vuex.Store({
   state: {
     foodList: [],
-    curent:[]
+    // curent:[],
+    searchedFood:[]
   },
   mutations: {
     addItemToCart(state, item) {
       state.cart.push(item)
+    },
+    setSerchRes(state, payload){
+      state.searchedFood = payload
     }
+    
   },
   actions: {
     addItemToCart({ commit, dispatch }, item) {
       commit('addItemToCart', item)
       router.push({ name: 'cart' })
-    }
-  },
+    },
   getFoodList({ commit, dispatch }, items) {
     api.post("", { query: items })
       .then(res => {
         console.log(res.data.foods)
+        commit('setSerchRes', res.data.foods)
       })
   }
+}
 })
 
 
